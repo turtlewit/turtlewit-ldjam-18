@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Prefabs/Tiles.meshlib" type="MeshLibrary" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
+[ext_resource path="res://Art/GunFirstPerson.png" type="Texture" id=3]
 
 [sub_resource type="Environment" id=7]
 
@@ -433,6 +434,36 @@ _sections_unfolded = [ "Transform" ]
 
 shape = SubResource( 8 )
 disabled = false
+
+[node name="Viewmodel" type="CanvasLayer" parent="Player" index="4"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="Container" type="Container" parent="Player/Viewmodel" index="0"]
+
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 960.0
+margin_top = -63.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Anchor", "Margin", "Rect" ]
+
+[node name="Sprite" type="Sprite" parent="Player/Viewmodel/Container" index="0"]
+
+scale = Vector2( 4, 4 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="MeshInstance" type="MeshInstance" parent="." index="3"]
 

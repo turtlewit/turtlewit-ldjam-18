@@ -10,7 +10,7 @@ source_file="res://Art/GunFirstPerson.png"
 source_md5="5fbc820adfb85cf1d3175a4cd932b0cb"
 
 dest_files=[ "res://.import/GunFirstPerson.png-015b8d1bf352d653940afaef63411605.stex" ]
-dest_md5="c114d0c9c735deee23b0bc5312febd60"
+dest_md5="9d4524f944b32ac45737417a2607be68"
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
