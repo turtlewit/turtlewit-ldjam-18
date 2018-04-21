@@ -8,9 +8,10 @@ export var height = 0
 export var tile = Vector2(0,0)
 export var movescale = 1
 
+var move_colliders
+var collider_names
+
 var dir = 0 # up right down left
-
-
 
 var move = {
 	forward = 0,
@@ -22,6 +23,18 @@ func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
 	global_transform.origin = Vector3(tile[0], height, tile[0])
+	move_colliders = {
+		east 	= $ColliderEast,
+		west 	= $ColliderWest,
+		north 	= $ColliderNorth,
+		south 	= $ColliderSouth
+	}
+	collider_names = [
+		move_colliders.east.name, 
+		move_colliders.west.name, 
+		move_colliders.north.name, 
+		move_colliders.south.name
+	]
 
 func _process(delta):
 	# Called every frame. Delta is time since last frame.
@@ -44,7 +57,8 @@ func process_input():
 		move.t_left = 1
 	if Input.is_action_just_pressed("turn_right"):
 		move.t_left = 3
-	move(Vector2(move.forward, move.right))
+	if move.forward != 0 or move.right != 0:
+		move(Vector2(move.forward, move.right))
 	rotate(move.t_left)
 	
 	if Input.is_action_just_pressed("fire"):
@@ -56,15 +70,47 @@ func move(dir):
 	var dir2 = Vector2(0,0)
 	dir2 += Vector2(temp2.x, temp2.z) 
 	dir2 -= Vector2(temp1.x, temp1.z)
-	print(dir2)
-	tile += dir2
-	global_transform.origin = Vector3(tile[0] * movescale, height, tile[1] * movescale)
+	if is_move_good(dir2):
+		tile += dir2
+		tile.x = int(tile.x)
+		tile.y = int(tile.y)
+		global_transform.origin = Vector3(tile[0] * movescale, height, tile[1] * movescale)
 
 func rotate(tdir):
 	# tdir is either -1 or 1, -1 for right, 1 for left
 	dir = (dir + tdir) % 4
 	rotation_degrees = Vector3(0, dir * 90, 0)
-	print(dir)
 
 func fire():
 	pass
+
+#func is_move_good(dir):
+#	var from = global_transform.origin
+#	var to = from + Vector3(dir[0] * (movescale + 1), 0, dir[1] * (movescale + 1)) 
+#	var space_state = get_world().get_direct_space_state()
+#	#print (from, to)
+#	var result = space_state.intersect_ray(from, to, []) # Include self here
+#	if not result.empty():
+#		if result.collider.name != "enemy":
+##			var distance = abs((camera.global_transform.origin - (result.collider.translation + Vector3(0,1,0) * camera.global_transform.origin.y)).length())
+##			result.collider.on_hit(1, 10 * (ray_length / distance))
+#			return false
+#	return true
+
+func is_move_good(dir):
+	var collided = []
+	if dir.x == -1:
+		collided += move_colliders.north.get_overlapping_bodies()
+	if dir.x == 1:
+		collided += move_colliders.south.get_overlapping_bodies()
+	if dir.y == -1:
+		collided += move_colliders.west.get_overlapping_bodies()
+	if dir.y == 1:
+		collided += move_colliders.east.get_overlapping_bodies()
+	if not collided.empty():
+		for collider in collided:
+			print (collider.name)
+			if not collider.name in collider_names:
+				return false
+	return true
+	
