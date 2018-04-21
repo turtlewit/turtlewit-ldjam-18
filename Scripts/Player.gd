@@ -22,7 +22,7 @@ var move = {
 func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
-	global_transform.origin = Vector3(tile[0], height, tile[0])
+	global_transform.origin = Vector3(tile[0] * movescale, height, tile[1] * movescale)
 	move_colliders = {
 		east 	= $ColliderEast,
 		west 	= $ColliderWest,

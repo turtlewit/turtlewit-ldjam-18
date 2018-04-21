@@ -10,7 +10,7 @@ source_file="res://Art/FloatingRobotEnemy.png"
 source_md5="822e726c1343823a74ad0f9208ec2963"
 
 dest_files=[ "res://.import/FloatingRobotEnemy.png-58275398fc9030100deac34bf0b2495d.stex" ]
-dest_md5="b816a50c8e21733dce6e085e95e1b413"
+dest_md5="47ce273c1eb244b1bd6cc02f4b276b2a"
 
 [params]
 
@@ -18,8 +18,8 @@ compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
-flags/repeat=0
-flags/filter=true
+flags/repeat=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -28,5 +28,5 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

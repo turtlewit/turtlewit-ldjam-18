@@ -1,14 +1,19 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Prefabs/Tiles.meshlib" type="MeshLibrary" id=1]
-[ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
-[ext_resource path="res://Art/GunFirstPerson.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://Art/GunFirstPerson.png" type="Texture" id=2]
+[ext_resource path="res://Prefabs/Tiles.meshlib" type="MeshLibrary" id=3]
+[ext_resource path="res://Prefabs/enemy1.tscn" type="PackedScene" id=4]
 
-[sub_resource type="Environment" id=7]
+[sub_resource type="BoxShape" id=1]
+
+extents = Vector3( 1, 1, 1 )
+
+[sub_resource type="Environment" id=2]
 
 background_mode = 1
 background_sky_custom_fov = 0.0
-background_color = Color( 0.0111084, 0.109375, 0, 1 )
+background_color = Color( 0.109375, 0, 0.0922852, 1 )
 background_energy = 1.0
 background_canvas_max_layer = 0
 ambient_light_color = Color( 0.492188, 0.492188, 0.492188, 1 )
@@ -83,269 +88,11 @@ adjustment_contrast = 1.0
 adjustment_saturation = 1.0
 _sections_unfolded = [ "Ambient Light", "Background" ]
 
-[sub_resource type="SpatialMaterial" id=1]
-
-render_priority = 0
-flags_transparent = false
-flags_unshaded = false
-flags_vertex_lighting = false
-flags_no_depth_test = false
-flags_use_point_size = false
-flags_world_triplanar = false
-flags_fixed_size = false
-flags_albedo_tex_force_srgb = false
-vertex_color_use_as_albedo = false
-vertex_color_is_srgb = false
-params_diffuse_mode = 0
-params_specular_mode = 0
-params_blend_mode = 0
-params_cull_mode = 0
-params_depth_draw_mode = 0
-params_line_width = 1.0
-params_point_size = 1.0
-params_billboard_mode = 0
-params_grow = false
-params_use_alpha_scissor = false
-albedo_color = Color( 1, 0, 0, 1 )
-metallic = 0.0
-metallic_specular = 0.5
-metallic_texture_channel = 0
-roughness = 0.0
-roughness_texture_channel = 0
-emission_enabled = false
-normal_enabled = false
-rim_enabled = false
-clearcoat_enabled = false
-anisotropy_enabled = false
-ao_enabled = false
-depth_enabled = false
-subsurf_scatter_enabled = false
-transmission_enabled = false
-refraction_enabled = false
-detail_enabled = false
-uv1_scale = Vector3( 1, 1, 1 )
-uv1_offset = Vector3( 0, 0, 0 )
-uv1_triplanar = false
-uv1_triplanar_sharpness = 1.0
-uv2_scale = Vector3( 1, 1, 1 )
-uv2_offset = Vector3( 0, 0, 0 )
-uv2_triplanar = false
-uv2_triplanar_sharpness = 1.0
-proximity_fade_enable = false
-distance_fade_enable = false
-_sections_unfolded = [ "Albedo" ]
-
-[sub_resource type="CubeMesh" id=2]
-
-material = SubResource( 1 )
-size = Vector3( 2, 2, 2 )
-subdivide_width = 0
-subdivide_height = 0
-subdivide_depth = 0
-
-[sub_resource type="BoxShape" id=9]
-
-extents = Vector3( 1, 1, 1 )
-
-[sub_resource type="BoxShape" id=8]
-
-extents = Vector3( 1, 1, 1 )
-
-[sub_resource type="SpatialMaterial" id=3]
-
-render_priority = 0
-flags_transparent = false
-flags_unshaded = false
-flags_vertex_lighting = false
-flags_no_depth_test = false
-flags_use_point_size = false
-flags_world_triplanar = false
-flags_fixed_size = false
-flags_albedo_tex_force_srgb = false
-vertex_color_use_as_albedo = false
-vertex_color_is_srgb = false
-params_diffuse_mode = 0
-params_specular_mode = 0
-params_blend_mode = 0
-params_cull_mode = 0
-params_depth_draw_mode = 0
-params_line_width = 1.0
-params_point_size = 1.0
-params_billboard_mode = 0
-params_grow = false
-params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
-metallic = 0.0
-metallic_specular = 0.5
-metallic_texture_channel = 0
-roughness = 0.0
-roughness_texture_channel = 0
-emission_enabled = false
-normal_enabled = false
-rim_enabled = false
-clearcoat_enabled = false
-anisotropy_enabled = false
-ao_enabled = false
-depth_enabled = false
-subsurf_scatter_enabled = false
-transmission_enabled = false
-refraction_enabled = false
-detail_enabled = false
-uv1_scale = Vector3( 1, 1, 1 )
-uv1_offset = Vector3( 0, 0, 0 )
-uv1_triplanar = false
-uv1_triplanar_sharpness = 1.0
-uv2_scale = Vector3( 1, 1, 1 )
-uv2_offset = Vector3( 0, 0, 0 )
-uv2_triplanar = false
-uv2_triplanar_sharpness = 1.0
-proximity_fade_enable = false
-distance_fade_enable = false
-
-[sub_resource type="CubeMesh" id=4]
-
-material = SubResource( 3 )
-size = Vector3( 2, 2, 2 )
-subdivide_width = 0
-subdivide_height = 0
-subdivide_depth = 0
-
-[sub_resource type="SpatialMaterial" id=5]
-
-render_priority = 0
-flags_transparent = false
-flags_unshaded = false
-flags_vertex_lighting = false
-flags_no_depth_test = false
-flags_use_point_size = false
-flags_world_triplanar = false
-flags_fixed_size = false
-flags_albedo_tex_force_srgb = false
-vertex_color_use_as_albedo = false
-vertex_color_is_srgb = false
-params_diffuse_mode = 0
-params_specular_mode = 0
-params_blend_mode = 0
-params_cull_mode = 0
-params_depth_draw_mode = 0
-params_line_width = 1.0
-params_point_size = 1.0
-params_billboard_mode = 0
-params_grow = false
-params_use_alpha_scissor = false
-albedo_color = Color( 1, 1, 1, 1 )
-metallic = 0.0
-metallic_specular = 0.5
-metallic_texture_channel = 0
-roughness = 0.0
-roughness_texture_channel = 0
-emission_enabled = false
-normal_enabled = false
-rim_enabled = false
-clearcoat_enabled = false
-anisotropy_enabled = false
-ao_enabled = false
-depth_enabled = false
-subsurf_scatter_enabled = false
-transmission_enabled = false
-refraction_enabled = false
-detail_enabled = false
-uv1_scale = Vector3( 1, 1, 1 )
-uv1_offset = Vector3( 0, 0, 0 )
-uv1_triplanar = false
-uv1_triplanar_sharpness = 1.0
-uv2_scale = Vector3( 1, 1, 1 )
-uv2_offset = Vector3( 0, 0, 0 )
-uv2_triplanar = false
-uv2_triplanar_sharpness = 1.0
-proximity_fade_enable = false
-distance_fade_enable = false
-_sections_unfolded = [ "Albedo" ]
-
-[sub_resource type="CubeMesh" id=6]
-
-material = SubResource( 5 )
-size = Vector3( 2, 2, 2 )
-subdivide_width = 0
-subdivide_height = 0
-subdivide_depth = 0
-
 [node name="scene" type="Spatial" index="0"]
 
 _sections_unfolded = [ "Transform" ]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="0"]
-
-environment = SubResource( 7 )
-
-[node name="GridMap" type="GridMap" parent="." index="1"]
-
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 2, 0, 2 )
-theme = ExtResource( 1 )
-cell_size = Vector3( 2, 2, 2 )
-cell_octant_size = 8
-cell_center_x = true
-cell_center_y = true
-cell_center_z = true
-cell_scale = 1.0
-collision_layer = 1
-collision_mask = 1
-data = {
-"cells": PoolIntArray( 1, 0, 917504, 6, 0, 917504, 7, 0, 655360, 65529, 0, 262144, 65534, 0, 262144, 0, 1, 1245184, 6, 1, 917504, 7, 1, 655361, 8, 1, 1441792, 9, 1, 1441792, 65529, 1, 262144, 6, 2, 917504, 65529, 2, 262144, 6, 3, 917504, 7, 3, 1048577, 8, 3, 1048576, 9, 3, 1048576, 65529, 3, 262144, 6, 4, 917504, 7, 4, 537526272, 65529, 4, 262144, 0, 5, 1245184, 1, 5, 1245184, 2, 5, 1245184, 3, 5, 1245184, 4, 5, 538116096, 5, 5, 1245184, 65530, 5, 1245184, 65531, 5, 1245184, 65532, 5, 1245184, 65533, 5, 1245184, 65534, 5, 1245184, 65535, 5, 1245184, 0, 65528, 1310720, 1, 65528, -1609302016, 2, 65528, -1609302016, 65530, 65528, 1310720, 65531, 65528, 1310720, 65532, 65528, 1310720, 65533, 65528, 538181632, 65534, 65528, 1310720, 65535, 65528, 1310720, 3, 65529, 131072, 65529, 65529, 0, 3, 65530, 131072, 65529, 65530, 0, 3, 65531, 131072, 65529, 65531, 0, 3, 65532, 131072, 65529, 65532, 0, 3, 65533, 655361, 4, 65533, 1441792, 5, 65533, 1441792, 6, 65533, 1441792, 65529, 65533, 0, 0, 65534, 1507328, 3, 65534, 1507328, 4, 65534, 1507328, 5, 65534, 1507328, 7, 65534, 655360, 65529, 65534, -536870912, 65535, 65534, 1507328, 1, 65535, 917504, 6, 65535, 917504, 7, 65535, 655360, 65529, 65535, 0, 65534, 65535, 262144 )
-}
-_sections_unfolded = [ "Cell", "Transform" ]
-__meta__ = {
-"_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, 0, 0 )
-}
-
-[node name="MeshInstance" type="MeshInstance" parent="." index="2"]
-
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0371, 0.704849, 0 )
-visible = false
-layers = 1
-material_override = null
-cast_shadow = 1
-extra_cull_margin = 0.0
-use_in_baked_light = false
-lod_min_distance = 0.0
-lod_min_hysteresis = 0.0
-lod_max_distance = 0.0
-lod_max_hysteresis = 0.0
-mesh = SubResource( 2 )
-skeleton = NodePath("..")
-material/0 = null
-
-[node name="StaticBody" type="Area" parent="MeshInstance" index="0"]
-
-input_ray_pickable = true
-input_capture_on_drag = false
-space_override = 0
-gravity_point = false
-gravity_distance_scale = 0.0
-gravity_vec = Vector3( 0, -1, 0 )
-gravity = 9.8
-linear_damp = 0.1
-angular_damp = 1.0
-priority = 0.0
-monitoring = true
-monitorable = true
-collision_layer = 1
-collision_mask = 1
-audio_bus_override = false
-audio_bus_name = "Master"
-reverb_bus_enable = false
-reverb_bus_name = "Master"
-reverb_bus_amount = 0.0
-reverb_bus_uniformity = 0.0
-_sections_unfolded = [ "Collision" ]
-
-[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/StaticBody" index="0"]
-
-shape = SubResource( 9 )
-disabled = false
-
-[node name="Player" type="Camera" parent="." index="3"]
+[node name="Player" type="Camera" parent="." index="0"]
 
 editor/display_folded = true
 keep_aspect = 1
@@ -360,13 +107,43 @@ fov = 50.0
 size = 1.0
 near = 0.05
 far = 100.0
-script = ExtResource( 2 )
+script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 height = 2
 tile = Vector2( 0, 0 )
 movescale = 4
 
-[node name="ColliderWest" type="Area" parent="Player" index="0"]
+[node name="Viewmodel" type="CanvasLayer" parent="Player" index="0"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="CenterContainer" type="CenterContainer" parent="Player/Viewmodel" index="0"]
+
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_top = -93.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+use_top_left = false
+_sections_unfolded = [ "Anchor", "Margin" ]
+
+[node name="Sprite" type="Sprite" parent="Player/Viewmodel/CenterContainer" index="0"]
+
+scale = Vector2( 4, 4 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Offset", "Transform" ]
+
+[node name="ColliderWest" type="Area" parent="Player" index="1"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.01, 0, 0 )
 input_ray_pickable = true
@@ -394,11 +171,11 @@ _sections_unfolded = [ "Transform" ]
 [node name="CollisionShape" type="CollisionShape" parent="Player/ColliderWest" index="0"]
 
 transform = Transform( 1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0 )
-shape = SubResource( 8 )
+shape = SubResource( 1 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
-[node name="ColliderNorth" type="Area" parent="Player" index="1"]
+[node name="ColliderNorth" type="Area" parent="Player" index="2"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.01 )
 input_ray_pickable = true
@@ -426,11 +203,11 @@ _sections_unfolded = [ "Transform" ]
 [node name="CollisionShape" type="CollisionShape" parent="Player/ColliderNorth" index="0"]
 
 transform = Transform( 1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0 )
-shape = SubResource( 8 )
+shape = SubResource( 1 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
-[node name="ColliderEast" type="Area" parent="Player" index="2"]
+[node name="ColliderEast" type="Area" parent="Player" index="3"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.01, 0, 0 )
 input_ray_pickable = true
@@ -458,11 +235,11 @@ _sections_unfolded = [ "Transform" ]
 [node name="CollisionShape" type="CollisionShape" parent="Player/ColliderEast" index="0"]
 
 transform = Transform( 1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0 )
-shape = SubResource( 8 )
+shape = SubResource( 1 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
-[node name="ColliderSouth" type="Area" parent="Player" index="3"]
+[node name="ColliderSouth" type="Area" parent="Player" index="4"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.01 )
 input_ray_pickable = true
@@ -490,75 +267,38 @@ _sections_unfolded = [ "Transform" ]
 [node name="CollisionShape" type="CollisionShape" parent="Player/ColliderSouth" index="0"]
 
 transform = Transform( 1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0 )
-shape = SubResource( 8 )
+shape = SubResource( 1 )
 disabled = false
 _sections_unfolded = [ "Transform" ]
 
-[node name="Viewmodel" type="CanvasLayer" parent="Player" index="4"]
+[node name="env" type="Spatial" parent="." index="1"]
 
-layer = 1
-offset = Vector2( 0, 0 )
-rotation = 0.0
-scale = Vector2( 1, 1 )
-transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+[node name="WorldEnvironment" type="WorldEnvironment" parent="env" index="0"]
 
-[node name="Container" type="Container" parent="Player/Viewmodel" index="0"]
+environment = SubResource( 2 )
 
-anchor_left = 0.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 960.0
-margin_top = -63.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-_sections_unfolded = [ "Anchor", "Margin", "Rect" ]
+[node name="GridMap" type="GridMap" parent="env" index="1"]
 
-[node name="Sprite" type="Sprite" parent="Player/Viewmodel/Container" index="0"]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 2, 0, 2 )
+theme = ExtResource( 3 )
+cell_size = Vector3( 2, 2, 2 )
+cell_octant_size = 8
+cell_center_x = true
+cell_center_y = true
+cell_center_z = true
+cell_scale = 1.0
+collision_layer = 1
+collision_mask = 1
+data = {
+"cells": PoolIntArray( 1, 0, 537788416, 6, 0, 537788416, 7, 0, 655360, 65529, 0, 262144, 65534, 0, 262144, 0, 1, 1245184, 6, 1, 917504, 7, 1, 655361, 8, 1, 1441792, 9, 1, 1441792, 65529, 1, 262144, 6, 2, 917504, 65529, 2, 262144, 6, 3, 917504, 7, 3, 1048577, 8, 3, 537919488, 9, 3, 1048576, 65529, 3, 262144, 6, 4, 917504, 7, 4, 655360, 65529, 4, 262144, 0, 5, -1609367552, 1, 5, 1245184, 2, 5, -1609367552, 3, 5, 1245184, 4, 5, 1245184, 5, 5, 1245184, 65530, 5, 1245184, 65531, 5, 1245184, 65532, 5, 1245184, 65533, 5, 1245184, 65534, 5, 1245184, 65535, 5, 1245184, 0, 65528, -1609302016, 1, 65528, 1310720, 2, 65528, -1609302016, 65530, 65528, 1310720, 65531, 65528, -1609302016, 65532, 65528, 1310720, 65533, 65528, 1310720, 65534, 65528, -535560192, 65535, 65528, 1310720, 3, 65529, 131072, 65529, 65529, 0, 3, 65530, 131072, 65529, 65530, 0, 3, 65531, 131072, 65529, 65531, 0, 3, 65532, 131072, 65529, 65532, 0, 3, 65533, 655361, 4, 65533, 1441792, 5, 65533, 1441792, 6, 65533, 1441792, 65529, 65533, 0, 0, 65534, 1507328, 3, 65534, 1507328, 4, 65534, 1507328, 5, 65534, -1609105408, 7, 65534, 655360, 65529, 65534, 0, 65535, 65534, 1507328, 1, 65535, 917504, 6, 65535, 917504, 7, 65535, -1073086464, 65529, 65535, 0, 65534, 65535, 262144 )
+}
+_sections_unfolded = [ "Cell", "Transform" ]
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
 
-scale = Vector2( 4, 4 )
-texture = ExtResource( 3 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="MeshInstance2" type="MeshInstance" parent="." index="4"]
-
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.14172, 0, -10.2925 )
-visible = false
-layers = 1
-material_override = null
-cast_shadow = 1
-extra_cull_margin = 0.0
-use_in_baked_light = false
-lod_min_distance = 0.0
-lod_min_hysteresis = 0.0
-lod_max_distance = 0.0
-lod_max_hysteresis = 0.0
-mesh = SubResource( 4 )
-skeleton = NodePath("..")
-material/0 = null
-
-[node name="MeshInstance3" type="MeshInstance" parent="." index="5"]
-
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.11543, 0, 5.50447 )
-visible = false
-layers = 1
-material_override = null
-cast_shadow = 1
-extra_cull_margin = 0.0
-use_in_baked_light = false
-lod_min_distance = 0.0
-lod_min_hysteresis = 0.0
-lod_max_distance = 0.0
-lod_max_hysteresis = 0.0
-mesh = SubResource( 6 )
-skeleton = NodePath("..")
-material/0 = null
-
-[node name="DirectionalLight" type="DirectionalLight" parent="." index="6"]
+[node name="DirectionalLight" type="DirectionalLight" parent="env" index="2"]
 
 transform = Transform( -0.516612, -0.647752, -0.559937, 0.49574, -0.759487, 0.421215, -0.698108, -0.0599783, 0.713476, 0, 10.1262, 0 )
 layers = 1
@@ -584,6 +324,15 @@ directional_shadow_normal_bias = 0.8
 directional_shadow_bias_split_scale = 0.25
 directional_shadow_depth_range = 0
 directional_shadow_max_distance = 200.0
+
+[node name="enemies" type="Spatial" parent="." index="2"]
+
+[node name="enemy" parent="enemies" index="0" instance=ExtResource( 4 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0391, 0, -11.1447 )
+height = 0
+tile = Vector2( -2, -2 )
+movescale = 4
 
 [connection signal="area_entered" from="Player/ColliderWest" to="Player" method="_on_ColliderWest_area_entered"]
 
