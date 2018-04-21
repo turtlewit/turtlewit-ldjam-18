@@ -5,8 +5,12 @@ extends Camera
 # var b = "textvar"
 
 export var height = 0
-var tile = Vector2(0,0)
+export var tile = Vector2(0,0)
+export var movescale = 1
+
 var dir = 0 # up right down left
+
+
 
 var move = {
 	forward = 0,
@@ -52,7 +56,9 @@ func move(dir):
 	var dir2 = Vector2(0,0)
 	dir2 += Vector2(temp2.x, temp2.z) 
 	dir2 -= Vector2(temp1.x, temp1.z)
-	global_transform.origin = Vector3(tile[0], height, tile[0])
+	print(dir2)
+	tile += dir2
+	global_transform.origin = Vector3(tile[0] * movescale, height, tile[1] * movescale)
 
 func rotate(tdir):
 	# tdir is either -1 or 1, -1 for right, 1 for left

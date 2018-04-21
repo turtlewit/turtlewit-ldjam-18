@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://Prefabs/Tiles.meshlib" type="MeshLibrary" id=2]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -183,7 +184,7 @@ subdivide_depth = 0
 
 [sub_resource type="Environment" id=7]
 
-background_mode = 0
+background_mode = 1
 background_sky_custom_fov = 0.0
 background_color = Color( 0, 0, 0, 1 )
 background_energy = 1.0
@@ -258,9 +259,11 @@ adjustment_enabled = false
 adjustment_brightness = 1.0
 adjustment_contrast = 1.0
 adjustment_saturation = 1.0
-_sections_unfolded = [ "Ambient Light" ]
+_sections_unfolded = [ "Ambient Light", "Background" ]
 
 [node name="scene" type="Spatial" index="0"]
+
+_sections_unfolded = [ "Transform" ]
 
 [node name="Player" type="Camera" parent="." index="0"]
 
@@ -272,16 +275,19 @@ v_offset = 0.0
 doppler_tracking = 0
 projection = 0
 current = false
-fov = 70.0
+fov = 50.0
 size = 1.0
 near = 0.05
 far = 100.0
 script = ExtResource( 1 )
-height = 0
+height = 2
+tile = Vector2( 0, 0 )
+movescale = 4
 
 [node name="MeshInstance" type="MeshInstance" parent="." index="1"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.14846, 0, 0 )
+visible = false
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -298,6 +304,7 @@ material/0 = null
 [node name="MeshInstance2" type="MeshInstance" parent="." index="2"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.14172, 0, -10.2925 )
+visible = false
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -314,6 +321,7 @@ material/0 = null
 [node name="MeshInstance3" type="MeshInstance" parent="." index="3"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.11543, 0, 5.50447 )
+visible = false
 layers = 1
 material_override = null
 cast_shadow = 1
@@ -330,5 +338,26 @@ material/0 = null
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="4"]
 
 environment = SubResource( 7 )
+
+[node name="GridMap" type="GridMap" parent="." index="5"]
+
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 2, 0, 2 )
+theme = ExtResource( 2 )
+cell_size = Vector3( 2, 2, 2 )
+cell_octant_size = 8
+cell_center_x = true
+cell_center_y = true
+cell_center_z = true
+cell_scale = 1.0
+collision_layer = 1
+collision_mask = 1
+data = {
+"cells": PoolIntArray( 1, 0, 917504, 6, 0, 917504, 7, 0, 537526272, 65529, 0, 262144, 65534, 0, 262144, 0, 1, 1245184, 6, 1, 537788416, 7, 1, 537526273, 8, 1, -1609170944, 9, 1, 1441792, 65529, 1, -1610350592, 6, 2, 917504, 65529, 2, 262144, 6, 3, -1609695232, 7, 3, -1609564159, 8, 3, 1048576, 9, 3, -1609564160, 65529, 3, 537133056, 6, 4, 917504, 7, 4, 537526272, 65529, 4, 262144, 0, 5, -1609367552, 1, 5, 1245184, 2, 5, -1609367552, 3, 5, 1245184, 4, 5, 1245184, 5, 5, 538116096, 65530, 5, 1245184, 65531, 5, 1245184, 65532, 5, 1245184, 65533, 5, 1245184, 65534, 5, 1245184, 65535, 5, -1609367552, 0, 65528, 1310720, 1, 65528, 1310720, 2, 65528, 1310720, 65530, 65528, 1310720, 65531, 65528, 1310720, 65532, 65528, -1609302016, 65533, 65528, -1609302016, 65534, 65528, 538181632, 65535, 65528, 538181632, 3, 65529, 131072, 65529, 65529, 0, 3, 65530, 131072, 65529, 65530, 536870912, 3, 65531, 131072, 65529, 65531, 536870912, 3, 65532, 537001984, 65529, 65532, 0, 3, 65533, 655361, 4, 65533, -1609170944, 5, 65533, 538312704, 6, 65533, 1441792, 65529, 65533, 0, 0, 65534, 538378240, 3, 65534, -1609105408, 4, 65534, 1507328, 5, 65534, -1609105408, 7, 65534, 537526272, 65529, 65534, -1610612736, 65535, 65534, 1507328, 1, 65535, 917504, 6, 65535, 917504, 7, 65535, 537526272, 65529, 65535, 0, 65534, 65535, 262144 )
+}
+_sections_unfolded = [ "Cell", "Transform" ]
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
 
 
