@@ -47,18 +47,18 @@ func process_input():
 	move.t_left = 0
 	if Input.is_action_just_pressed("move_up"):
 		move.forward += 1
-	if Input.is_action_just_pressed("move_left"):
+	elif Input.is_action_just_pressed("move_left"):
 		move.right -= 1
-	if Input.is_action_just_pressed("move_down"):
+	elif Input.is_action_just_pressed("move_down"):
 		move.forward -= 1
-	if Input.is_action_just_pressed("move_right"):
+	elif Input.is_action_just_pressed("move_right"):
 		move.right += 1
 	if Input.is_action_just_pressed("turn_left"):
 		move.t_left = 1
 	if Input.is_action_just_pressed("turn_right"):
 		move.t_left = 3
 	if move.forward != 0 or move.right != 0:
-		move(Vector2(move.forward, move.right))
+		move(Vector2(move.right, move.forward))
 	rotate(move.t_left)
 	
 	if Input.is_action_just_pressed("fire"):
@@ -70,10 +70,12 @@ func move(dir):
 	var dir2 = Vector2(0,0)
 	dir2 += Vector2(temp2.x, temp2.z) 
 	dir2 -= Vector2(temp1.x, temp1.z)
-	if is_move_good(dir2):
+	print(dir)
+	if is_move_good(dir):
 		tile += dir2
-		tile.x = int(tile.x)
-		tile.y = int(tile.y)
+		tile.x = int(round(tile.x))
+		tile.y = int(round(tile.y))
+		print(tile, "\n")
 		global_transform.origin = Vector3(tile[0] * movescale, height, tile[1] * movescale)
 
 func rotate(tdir):
@@ -97,16 +99,21 @@ func fire():
 #			return false
 #	return true
 
-func is_move_good(dir):
+func is_move_good(dir2):
 	var collided = []
-	if dir.x == -1:
-		collided += move_colliders.north.get_overlapping_bodies()
-	if dir.x == 1:
-		collided += move_colliders.south.get_overlapping_bodies()
-	if dir.y == -1:
+	if int(round(dir2.x)) == -1:
+		print("west")
 		collided += move_colliders.west.get_overlapping_bodies()
-	if dir.y == 1:
+	if int(round(dir2.x)) == 1:
+		print("east")
 		collided += move_colliders.east.get_overlapping_bodies()
+	if int(round(dir2.y)) == 1:
+		print("north")
+		collided += move_colliders.north.get_overlapping_bodies()
+	if int(round(dir2.y)) == -1:
+		print("south")
+		collided += move_colliders.south.get_overlapping_bodies()
+	
 	if not collided.empty():
 		for collider in collided:
 			print (collider.name)
@@ -114,3 +121,18 @@ func is_move_good(dir):
 				return false
 	return true
 	
+
+func _on_ColliderWest_area_entered(area):
+	print("AAAAAAAAAAAAAAAAAAAAAAHIOTYASDAHGUIOADSGINADGDSAUIOGADSGASNDIFUDSAF")
+
+
+func _on_ColliderWest_body_entered(body):
+	print("AAAAAAAAAAAAAAAAAAAAAAHIOTYASDAHGUIOADSGINADGDSAUIOGADSGASNDIFUDSAF")
+
+
+func _on_ColliderWest_area_shape_entered(area_id, area, area_shape, self_shape):
+	print("AAAAAAAAAAAAAAAAAAAAAAHIOTYASDAHGUIOADSGINADGDSAUIOGADSGASNDIFUDSAF")
+
+
+func _on_ColliderWest_body_shape_entered(body_id, body, body_shape, area_shape):
+	print("AAAAAAAAAAAAAAAAAAAAAAHIOTYASDAHGUIOADSGINADGDSAUIOGADSGASNDIFUDSAF")
