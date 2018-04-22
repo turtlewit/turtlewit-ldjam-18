@@ -61,9 +61,12 @@ _sections_unfolded = [ "Albedo", "Flags", "Parameters" ]
 radius = 1.0
 height = 2.0
 
-[node name="enemy" type="Spatial"]
+[node name="enemy" type="Spatial" index="0"]
 
 script = ExtResource( 1 )
+height = 0
+tile = Vector2( 0, 0 )
+movescale = 4
 
 [node name="Sprite3D" type="Sprite3D" parent="." index="0"]
 
@@ -107,7 +110,7 @@ playback_speed = 1.0
 anims/robot_idle = ExtResource( 3 )
 blend_times = [  ]
 
-[node name="Area" type="Area" parent="." index="1"]
+[node name="enemy_collider" type="Area" parent="." index="1"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 input_ray_pickable = false
@@ -132,7 +135,7 @@ reverb_bus_amount = 0.0
 reverb_bus_uniformity = 0.0
 _sections_unfolded = [ "Transform" ]
 
-[node name="CollisionShape" type="CollisionShape" parent="Area" index="0"]
+[node name="CollisionShape" type="CollisionShape" parent="enemy_collider" index="0"]
 
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
 shape = SubResource( 2 )

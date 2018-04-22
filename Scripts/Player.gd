@@ -11,6 +11,8 @@ export var movescale = 1
 var move_colliders
 var collider_names
 
+var anim_player
+
 var dir = 0 # up right down left
 
 var move = {
@@ -35,6 +37,8 @@ func _ready():
 		move_colliders.north.name, 
 		move_colliders.south.name
 	]
+	
+	anim_player = $Viewmodel/CenterContainer/Sprite/AnimationPlayer
 
 func _process(delta):
 	# Called every frame. Delta is time since last frame.
@@ -84,20 +88,19 @@ func rotate(tdir):
 	rotation_degrees = Vector3(0, dir * 90, 0)
 
 func fire():
-	pass
+	anim_player.play("fire")
+	var from = global_transform.origin
+	var to = from + -global_transform.basis.z * 1000
+	var space_state = get_world().get_direct_space_state()
+	#print (from, to)
+	var result = space_state.intersect_ray(from, to, [move_colliders.north, move_colliders.south, move_colliders.east, move_colliders.west]) # Include self here
+	if not result.empty():
+		print(result.collider.name)
+		if "enemy_collider" in result.collider.name:
+#			var distance = abs((camera.global_transform.origin - (result.collider.translation + Vector3(0,1,0) * camera.global_transform.origin.y)).length())
+#			result.collider.on_hit(1, 10 * (ray_length / distance))
+			result.collider.get_parent().on_hit()
 
-#func is_move_good(dir):
-#	var from = global_transform.origin
-#	var to = from + Vector3(dir[0] * (movescale + 1), 0, dir[1] * (movescale + 1)) 
-#	var space_state = get_world().get_direct_space_state()
-#	#print (from, to)
-#	var result = space_state.intersect_ray(from, to, []) # Include self here
-#	if not result.empty():
-#		if result.collider.name != "enemy":
-##			var distance = abs((camera.global_transform.origin - (result.collider.translation + Vector3(0,1,0) * camera.global_transform.origin.y)).length())
-##			result.collider.on_hit(1, 10 * (ray_length / distance))
-#			return false
-#	return true
 
 func is_move_good(dir2):
 	var collided = []
