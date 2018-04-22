@@ -1,9 +1,28 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
-[ext_resource path="res://Art/GunFirstPerson.png" type="Texture" id=2]
+[ext_resource path="res://Art/GunFirstPersonShot.png" type="Texture" id=2]
 [ext_resource path="res://Prefabs/Tiles.meshlib" type="MeshLibrary" id=3]
 [ext_resource path="res://Prefabs/enemy1.tscn" type="PackedScene" id=4]
+
+[sub_resource type="Animation" id=3]
+
+resource_name = "fire"
+length = 0.25
+loop = false
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
 
 [sub_resource type="BoxShape" id=1]
 
@@ -140,7 +159,10 @@ _sections_unfolded = [ "Anchor", "Margin" ]
 
 scale = Vector2( 4, 4 )
 texture = ExtResource( 2 )
-_sections_unfolded = [ "Offset", "Transform" ]
+vframes = 2
+hframes = 3
+frame = 4
+_sections_unfolded = [ "Animation", "Offset", "Transform" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Viewmodel/CenterContainer/Sprite" index="0"]
 
@@ -149,6 +171,7 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
+anims/fire = SubResource( 3 )
 blend_times = [  ]
 
 [node name="ColliderWest" type="Area" parent="Player" index="1"]
